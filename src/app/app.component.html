@@ -13,11 +13,11 @@
           <li>Prénom: {{collegueM.prenoms}}</li>
           <li>Date de naissance: {{collegueM.dateDeNaissance| date: 'shortDate'}}</li>
           <li *ngSwitchCase=0>Email: {{collegueM.email}}</li>
-          <ng-template #inputEmail>
-            <li *ngSwitchCase=1>Email: <input type="text" value={{collegueM.email}} #input (change)="changeEmail()"></li>
-          </ng-template>
+
+            <li *ngSwitchCase=1>Email: <input type="text" value={{collegueM.email}} [(ngModel)]="inputEmail" ></li>
+
           <li *ngSwitchCase=0>Photo URL: <a href={{collegueM.photoUrl}}>{{collegueM.photoUrl}}</a></li>
-          <li *ngSwitchCase=1>Photo URL: <input type="text" value={{collegueM.photoUrl}} #inputPhotoUrl></li>
+          <li *ngSwitchCase=1>Photo URL: <input type="text" value={{collegueM.photoUrl}} [(ngModel)]="inputPhotoUrl"></li>
         </ul>
       </div>
     </div>
