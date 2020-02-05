@@ -1,4 +1,4 @@
-<form>
+<!--<form>-->
   <div class="form-group row mt-2">
     <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right">
       <label class="control-label" for="search">Rechercher par nom</label>
@@ -10,4 +10,17 @@
       <button class="btn btn-primary" type="submit" (click)="rechercher()">Rechercher</button>
     </div>
   </div>
-</form>
+    <div class="row mt-3" [ngSwitch]="showList">
+      <div *ngSwitchCase=1>
+        <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right">
+        <ul >
+          <li *ngFor = "let matricule of matricules">
+            {{matricule}}
+          </li>
+        </ul>
+        </div>
+      </div>
+    <div *ngSwitchCase=0><p>Here</p></div>
+      </div>
+
+<!--</form>-->

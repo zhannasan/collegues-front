@@ -8,12 +8,14 @@ import { matriculesMock } from '../mock/matricules.mock';
 export class RechercheCollegueParNomComponent implements OnInit {
 
   constructor() { }
-  matricules: string[];
+  matricules = matriculesMock;
+  matriculesList: Promise<string>;
+  showList = 0;
   ngOnInit() {
   }
 
   rechercher(){
     console.log(matriculesMock);
-    this.matricules = matriculesMock;
+    this.showList = 1;
   }
 }
