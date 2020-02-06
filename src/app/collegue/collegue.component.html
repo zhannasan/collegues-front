@@ -14,7 +14,7 @@
           <li>Date de naissance: {{collegue.dateDeNaissance| date: 'shortDate'}}</li>
           <li *ngIf="!modifyState; else inputState">Email: {{collegue.email}}</li>
           <ng-template #inputState>
-          <li>Email: <input type="text" [value]="collegue.email" #inputEmail (change)="changeEmail(inputEmail.value, inputPhotoUrl)" (mouseover)="onMouse()" ></li>
+          <li>Email: <input type="text" [value]="collegue.email" #inputEmail (change)="changeEmail(inputEmail.value, inputPhoto)" (mouseover)="onMouse()" ></li>
           <li>Photo URL: <input type="text" [value]="collegue.photoUrl" #inputPhoto (change)="changeUrl(inputPhoto.value)"></li>
           </ng-template>
 

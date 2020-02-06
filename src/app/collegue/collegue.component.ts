@@ -14,7 +14,7 @@ export class CollegueComponent implements OnInit {
   collegue = collegueMock;
   isHidden = false;
   inputEmail: string;
-  inputPhotoUrl: string;
+  inputPhoto: string;
   constructor() { }
 
   ngOnInit() {
@@ -27,15 +27,17 @@ export class CollegueComponent implements OnInit {
     this.modifyState = true;
     this.isHidden = true;
   }
-  changeEmail(emailIn: string, photoIn: HTMLInputElement) {
+  changeEmail(emailIn: string, inputPhoto: HTMLInputElement) {
     this.inputEmail = emailIn;
-    photoIn.focus();
+    inputPhoto.focus();
   }
   changeUrl(urlIn: string) {
-    this.inputPhotoUrl = urlIn;
+    this.inputPhoto = urlIn;
   }
   valider() {
     this.modifyState = false;
     this.isHidden = false;
+  }
+  onMouse() {
   }
 }
