@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  urlData: 'https://collegue-app.herokuapp.com/collegues'
 };

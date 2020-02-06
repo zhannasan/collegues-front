@@ -1,43 +1,17 @@
 <div class="container">
   <div class="row mt-3">
-    <div class="col-12 col-lg-2 col-md-3 col-sm-4 col-xs-12 offset-1">
-      <div>
-        <img class="proflePic" src={{collegueM.photoUrl}} alt="Profile picture" height="150" width="150">
-      </div>
-    </div>
-    <div class="col-12 col-lg-4 col-md-6 col-sm-6 col-xs-12 mt-2">
-      <div [ngSwitch]="modifyState">
-        <ul>
-          <li>Matricule: {{collegueM.matricule}}</li>
-          <li>Nom: {{collegueM.nom | uppercase}}</li>
-          <li>Prénom: {{collegueM.prenoms}}</li>
-          <li>Date de naissance: {{collegueM.dateDeNaissance| date: 'shortDate'}}</li>
-          <li *ngSwitchCase=0>Email: {{collegueM.email}}</li>
-
-            <li *ngSwitchCase=1>Email: <input type="text" value={{collegueM.email}} [(ngModel)]="inputEmail" ></li>
-
-          <li *ngSwitchCase=0>Photo URL: <a href={{collegueM.photoUrl}}>{{collegueM.photoUrl}}</a></li>
-          <li *ngSwitchCase=1>Photo URL: <input type="text" value={{collegueM.photoUrl}} [(ngModel)]="inputPhotoUrl"></li>
-        </ul>
-      </div>
+    <div class="col-12 text-center">
+      <h2>Administration Collegue</h2>
     </div>
   </div>
 
-  <div class="row mt-2">
-    <div class="col-12 col-lg-4 col-md-4 col-sm-4 col-xs-4 offset-1">
-      <div [hidden]="isHidden">
-        <a href="#"(click)="creer()"  >Créer un nouveau collegue</a>
+  <div class="row mt-3">
+      <div class="col-12 col-xl-5 col-lg-5 col-md-8 col-sm-12 col-xs-12 mb-2">
+        <app-recherche-collegue-par-nom></app-recherche-collegue-par-nom>
       </div>
-    </div>
-    <div class="col-12 col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-2 offset-1">
-      <div [ngSwitch]="modifyState">
-        <button mdbBtn type="button" color="mdb-color" mdbWavesEffect (click)="modifier()" *ngSwitchCase=0>Modifier</button>
-        <button mdbBtn type="button" color="mdb-color" mdbWavesEffect (click)="valider()" *ngSwitchCase=1>Valider</button>
-      </div>
+      <div class="col-12 col-xl-7 col-lg-7 col-md-8 col-sm-12 col-xs-12 mb-2">
+        <app-collegue></app-collegue>
       </div>
     </div>
 
-    <div class="row mt-2">
-      <app-recherche-collegue-par-nom></app-recherche-collegue-par-nom>
-    </div>
 </div>

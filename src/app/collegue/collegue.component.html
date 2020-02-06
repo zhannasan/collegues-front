@@ -1,2 +1,42 @@
-<p>collegue works!</p>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-12 col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+      <div>
+        <img class="proflePic" src={{collegue.photoUrl}} alt="Profile picture" height="150" width="150">
+      </div>
+    </div>
+    <div class="col-12 col-xl-7 col-lg-7 col-md-7 col-sm-12 col-xs-12 mt-2">
+
+        <ul>
+          <li>Matricule: {{collegue.matricule}}</li>
+          <li>Nom: {{collegue.nom | uppercase}}</li>
+          <li>Prénom: {{collegue.prenoms}}</li>
+          <li>Date de naissance: {{collegue.dateDeNaissance| date: 'shortDate'}}</li>
+          <li *ngIf="!modifyState; else inputState">Email: {{collegue.email}}</li>
+          <ng-template #inputState>
+          <li>Email: <input type="text" [value]="collegue.email" #inputEmail (change)="changeEmail(inputEmail.value, inputPhotoUrl)" (mouseover)="onMouse()" ></li>
+          <li>Photo URL: <input type="text" [value]="collegue.photoUrl" #inputPhoto (change)="changeUrl(inputPhoto.value)"></li>
+          </ng-template>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+      <div [hidden]="isHidden">
+         <a href="#"(click)="creer()"  >Créer un nouveau collegue</a>
+      </div>
+    </div>
+    <div class="col-12 col-lg-3 col-md-3 col-sm-3 col-xs-3 mt-2 offset-1">
+      <div [ngSwitch]="modifyState">
+        <button mdbBtn type="button" color="mdb-color" mdbWavesEffect (click)="modifier()" *ngSwitchCase=0>Modifier</button>
+        <button mdbBtn type="button" color="mdb-color" mdbWavesEffect (click)="valider()" *ngSwitchCase=1>Valider</button>
+      </div>
+      </div>
+    </div>
+
+
+</div>
+
 
