@@ -1,0 +1,59 @@
+<div class="container">
+  <form #etatForm="ngForm" (ngSubmit)="onSubmit()" class="form form-create">
+    <div class="row mt-2">
+    <div class="col-12 col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+      <div>
+        <img class="proflePic" src={{model.photoUrl}} alt="Profile picture" height="150" width="150">
+      </div>
+    </div>
+
+    <div class="col-12 col-xl-7 col-lg-7 col-md-7 col-sm-12 col-xs-12 mt-2">
+
+      <div class="form-group">
+          <label for="name">Nom : </label>
+          <input type="text" id="name" name="nom" [(ngModel)]="model.nom" minlength="2" #etatNom="ngModel" required>
+          <div [hidden]="etatNom.valid || etatNom.pristine" class="alert alert-danger">Veuillez saisir un nom valide</div>
+      </div>
+      <div class="form-group">
+        <label for="fname">Prénom : </label>
+          <input type="text" id="fname" name="prenoms" [(ngModel)]="model.prenoms" minlength="2" #etatPrenoms="ngModel" required>
+          <div [hidden]="etatPrenoms.valid || etatPrenoms.pristine" class="alert alert-danger">Veuillez saisir un prenom valide</div>
+        </div>
+        <div class="form-group">
+          <label for="dateN"> Date de naissance : </label>
+         <input type="date" id="dateN" name="dateDeNaissance" [(ngModel)]="model.dateDeNaissance" #etatDateNaiss="ngModel" required>
+         <div [hidden]="etatDateNaiss.valid || etatDateNaiss.pristine" class="alert alert-danger">Veuillez saisir une date</div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email : </label>
+            <input type="text" id="email" name="email" [(ngModel)]="model.email" minlength="2" #etatEmail="ngModel" required>
+            <div [hidden]="etatEmail.valid || etatEmail.pristine" class="alert alert-danger">Veuillez saisir un email valide</div>
+          </div>
+
+        <div class="form-group">
+          <label for="photoUrl">Photo URL : </label>
+           <input type="text" id="photoUrl" name="photoUrl" [(ngModel)]="model.photoUrl" minlength="7" #etatPhoto="ngModel" required>
+           <div [hidden]="etatPhoto.valid || etatPhoto.pristine" class="alert alert-danger">Veuillez saisir un url valide</div>
+        </div>
+    </div>
+  </div>
+    </form>
+
+
+  <div class="row mt-2">
+    <div class="col-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+      <div [hidden]="isHidden">
+         <a href="#"(click)="creer()">Créer un nouveau collegue</a>
+      </div>
+    </div>
+    <div class="col-12 col-lg-3 col-md-3 col-sm-3 col-xs-3 mt-2 offset-1">
+        <button type="submit"  value="submit" [disabled]="!etatForm.form.valid" (click)="creerCollegue(etatForm)">Creer</button>
+      </div>
+    </div>
+
+
+</div>
+
+
+
