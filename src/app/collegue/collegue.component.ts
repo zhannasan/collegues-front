@@ -1,24 +1,29 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from '../models/Collegue';
+import { DataService } from '../services/data.service';
 import { collegueMock } from '../mock/collegues.mock';
-
 @Component({
   selector: 'app-collegue',
   templateUrl: './collegue.component.html',
   styleUrls: ['./collegue.component.css']
 })
 export class CollegueComponent implements OnInit {
-  @Input() col: Collegue;
-
-  modifyState = false;
+  @Input()
   collegue = collegueMock;
+  modifyState = false;
   isHidden = false;
-  inputEmail: string;
-  inputPhoto: string;
-  constructor() { }
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.dataService.subjectCollegue.subscribe(
+      col => {
+        this.collegue = col;
+        console.log('collegue reçu', col);
+      }
+    );
   }
+
   creer() {
     console.log('Création d’un nouveau collègue.');
   }
@@ -28,16 +33,18 @@ export class CollegueComponent implements OnInit {
     this.isHidden = true;
   }
   changeEmail(emailIn: string, inputPhoto: HTMLInputElement) {
-    this.inputEmail = emailIn;
+    this.collegue.email = emailIn;
     inputPhoto.focus();
   }
   changeUrl(urlIn: string) {
-    this.inputPhoto = urlIn;
+    this.collegue.email = urlIn;
   }
   valider() {
     this.modifyState = false;
     this.isHidden = false;
   }
   onMouse() {
+  }
+  afficherCollegue() {
   }
 }

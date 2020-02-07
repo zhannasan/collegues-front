@@ -13,15 +13,18 @@ export class RechercheCollegueParNomComponent implements OnInit {
 
   constructor(private dataService: DataService) { }
   matricules: Observable<string[]>;
-  collegues: Observable<Collegue[]>;
-  showList = 0;
+  collegue: Observable<Collegue[]>;
+
   ngOnInit() {
   }
 
   rechercher(nom: string) {
-    console.log('nom', nom);
     this.matricules =  this.dataService.rechercherParNom(nom);
-    console.log(this.matricules);
-    console.log('nom', nom);
   }
+
+  afficherCollegue(matricule: string){
+    this.dataService.recupererCollegueCourant(matricule).subscribe(
+      () => {},
+      error => console.log(error));
+    }
 }
